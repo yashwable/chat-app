@@ -1,9 +1,58 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import Logo from "../assets/logo.svg"
 
 function Register() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert('form');
+  };
+  
+  const handleChange = (event) => {
+
+  };
+
   return (
-    <div>Register</div>
-  )
+    <>
+    <FormContainer>
+      <form onSubmit={(event) => handleSubmit(event)}>
+      <div className='brand'>
+          <img src='' alt='Logo'/>
+          <h1>Snappy</h1>
+        </div>
+        <input 
+          type = "text" 
+          placeholder = "Username" 
+          name = "username" 
+          onChange={e => handleChange(e)} 
+        />
+        <input 
+          type = "email" 
+          placeholder = "Email" 
+          name = "email" 
+          onChange={e => handleChange(e)} 
+        />
+        <input 
+          type = "password" 
+          placeholder = "Password" 
+          name = "password" 
+          onChange={e => handleChange(e)} 
+        />
+        <input 
+          type = "password" 
+          placeholder = "Password" 
+          name = "password" 
+          onChange={e => handleChange(e)} 
+        />
+        <button>Create User</button>
+        <span>Already have an account? <Link to = "/login" >Login</Link></span>
+      </form>
+    </FormContainer>
+    </> 
+  ); 
 }
 
-export default Register
+const FormContainer = styled.div``;
+
+export default Register;
