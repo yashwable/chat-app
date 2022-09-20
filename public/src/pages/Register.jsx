@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg"
+import { useState } from 'react';
 
 function Register() {
+  const [values,setValues] = useState({
+    username : "",
+    email : "",
+    password : "",
+    confirmPassword : ""
+  })
+
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('form');
   };
   
   const handleChange = (event) => {
-
+    setValues({...values,[event.target.name] : event.target.value }); 
   };
 
   return (
