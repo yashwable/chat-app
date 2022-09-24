@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/APIRoutes";
 
 export default function SetAvatar() {
-  const api = `https://api.multiavatar.com/4645646`;
+  const api = `https://api.multiavatar.com/`;
   const navigate = useNavigate();
   const [avatars,setAvatars] = useState([]);
   const [isLoading,setIsLoading] = useState(true);
@@ -28,13 +28,14 @@ export default function SetAvatar() {
   useEffect( () => {
     const data = [];
     const getImage = async () => {
-        for (let i = 0 ; i < 4 ; i++){
+      for (let i = 0 ; i < 1 ; i++){
         const image = await axios.get(
-            `${api}/${Math.round(Math.random() * 1000)}`
+            `https://api.multiavatar.com/Binx Bond.svg`
+            // `${api}/${Math.round(Math.random() * 1000)}`
         );
         const buffer = new Buffer(image.data);
         data.push (buffer.toString("base64"));
-    }
+      }
     }
     getImage();
     setAvatars(data);
@@ -60,13 +61,17 @@ export default function SetAvatar() {
                                 <img 
                                 src={`data:image/svg+xml;base64,${avatar}`} 
                                 alt="avatar"
+                                key = {avatar}
                                 onClick={() => setSelectedAvatar(index)} 
                                 />
                             </div>
-                        )
+                        );
                     })
                 }
             </div>
+            <button inClick = {setProfilePicture} className = "submit-btn">
+              set as profile Picture
+            </button>
         </Container>
         <ToastContainer/>
     </>
